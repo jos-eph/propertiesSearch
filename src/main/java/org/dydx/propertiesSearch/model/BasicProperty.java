@@ -60,7 +60,6 @@ public class BasicProperty
     }
 
     public void setOwner1(String owner1) {
-        System.out.println("Inside setOwner1 setter: " + owner1);
         this.owner1 = owner1;
     }
 

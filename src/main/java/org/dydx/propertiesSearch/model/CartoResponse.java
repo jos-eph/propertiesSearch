@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Set;
 
 public abstract class CartoResponse {
+
     @JsonProperty("time")
     private BigDecimal time;
     @JsonProperty("fields")

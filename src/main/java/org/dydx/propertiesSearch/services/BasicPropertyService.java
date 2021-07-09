@@ -22,7 +22,7 @@ import java.util.List;
 public class BasicPropertyService {
     private final String API_BASE_URL;
     private RestTemplate restTemplate = new RestTemplate();
-    BasicPropertyList listOfPropertiesFromCarto;
+    BasicPropertyCarto listOfPropertiesFromCarto;
 
     public BasicPropertyService(String apiURL) {
         API_BASE_URL = apiURL;
@@ -45,13 +45,11 @@ public class BasicPropertyService {
         HttpEntity<String> entity = new HttpEntity<String>(request.toString(),headers);
 
         try {
-            listOfPropertiesFromCarto = restTemplate.postForObject(API_BASE_URL + "/post",entity,BasicPropertyList.class);
-            for (BasicProperty property : listOfPropertiesFromCarto.getRows())
-            System.out.println("Time: " + listOfPropertiesFromCarto.getTime());
-           System.out.println("Total rows: " + listOfPropertiesFromCarto.getTotalRows());
-            for (String field : listOfPropertiesFromCarto.returnFieldKeys())
-            {
-                System.out.println("Field: " + field);
+            listOfPropertiesFromCarto = restTemplate.postForObject(API_BASE_URL + "/post",entity,BasicPropertyCarto.class);
+            for (BasicProperty property : listOfPropertiesFromCarto.getRows()) {
+                for (String field : listOfPropertiesFromCarto.returnFieldKeys()) {
+                    System.out.println("Field: " + field);
+                }
             }
 
         }
