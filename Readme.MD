@@ -38,7 +38,7 @@ Regardless, the beginning and end of the search string are treated as having
 a `%` wildcard, so `Smith` matches `Smithson` or `Goldsmith`.
 
 ### Dependencies
-The propertiesSearch source requires a Spring Boot 2.5.2 and JUnit 4.12
+The propertiesSearch source requires Spring Boot 2.5.2 and JUnit 4.12
 in order to compile.
 
 ## Legal
