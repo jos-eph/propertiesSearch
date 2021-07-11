@@ -9,7 +9,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public abstract class CartoResponse {
+public abstract class CartoResponse<T> {
+    @JsonProperty("rows")
+    private List<T> rows;
+
+    public List<T> getRows() {
+        return rows;
+    }
+
+    public void setRows(List<T> rows) {
+        this.rows = rows;
+    }
 
     @JsonProperty("time")
     private BigDecimal time;

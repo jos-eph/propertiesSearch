@@ -12,8 +12,6 @@ import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
 
-// import javax.json.Json;
-// import javax.json.JsonObject;
 import org.json.JSONObject;
 
 import javax.websocket.RemoteEndpoint;
@@ -36,22 +34,20 @@ public class BasicPropertyService {
                                 SQLstrings.whereOwnerLike,
                 anyOwnerName,anyOwnerName);
 
-        JSONObject request = new JSONObject();
-        request.put("q",queryForDatabase);
+        CartoRequest request = new CartoRequest();
+        request.setQ(queryForDatabase);
+       // JSONObject request = new JSONObject();
+        //request.put("q",queryForDatabase);
+
         // https://docs.oracle.com/javaee/7/api/javax/json/JsonObjectBuilder.html
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<String> entity = new HttpEntity<String>(request.toString(),headers);
+        HttpEntity<CartoRequest> entity = new HttpEntity<>(request,headers);
+        // HttpEntity<String> entity = new HttpEntity<>(request.toString(),headers);
 
         try {
             listOfPropertiesFromCarto = restTemplate.postForObject(API_BASE_URL + "/post",entity,BasicPropertyCarto.class);
-            for (BasicProperty property : listOfPropertiesFromCarto.getRows()) {
-                for (String field : listOfPropertiesFromCarto.returnFieldKeys()) {
-                    System.out.println("Field: " + field);
-                }
-            }
-
         }
         catch (RestClientResponseException ex)
         {
@@ -61,7 +57,6 @@ public class BasicPropertyService {
             ex.printStackTrace(System.err);
         }
 
-       // return cartoResponse.getRows();
         return listOfPropertiesFromCarto.getRows();
 
 

@@ -2,6 +2,8 @@ package org.dydx.propertiesSearch.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.math.BigDecimal;
+
 public class BasicProperty
 {
     @JsonProperty("owner_1")
@@ -20,6 +22,10 @@ public class BasicProperty
 
     @JsonProperty("zip_code")
     private String zipCode;
+
+    @JsonProperty("market_value")
+    private BigDecimal marketValue;
+
     @JsonProperty("cartodb_id")
     private Long cartodbId;
     @JsonProperty("pwd_parcel_id")
@@ -31,11 +37,11 @@ public class BasicProperty
 
     private String objectString(Object object)
     {
-        if (object==null) return "";
+        if (object==null || object.equals("null")) {return "";}
         return object.toString();
     }
 
-    public String toString()
+    public String longToString()
     {
         String output = "";
         output = "owner1: " + getOwner1() + System.lineSeparator();
@@ -43,8 +49,9 @@ public class BasicProperty
         output += "houseNumber: " + getHouseNumber() + System.lineSeparator();
         output += "streetDirection: " + getStreetDirection() + System.lineSeparator();
         output += "streetName: " + getStreetName() + System.lineSeparator();
-        output += "streetDesignation: " + getStreetDirection() + System.lineSeparator();
+        output += "streetDesignation: " + getStreetDesignation() + System.lineSeparator();
         output += "zipCode: " + getZipCode() + System.lineSeparator();
+        output += "marketValue: " + getMarketValue().toString() + System.lineSeparator();
         output += "cartoDbId: " + objectString(getCartodbId()) + System.lineSeparator();
         output += "pwdParcelId: " + getPwdParcelId() + System.lineSeparator();
         output += "parcelNumber: " + getParcelNumber() + System.lineSeparator();
@@ -53,6 +60,27 @@ public class BasicProperty
 
 
         return output;
+    }
+
+    public String toString() {
+        String output = "";
+        String ownerBlock = (objectString(getOwner2()).equals("")) ?
+                objectString(getOwner1()) :
+                objectString(getOwner1()) + ", " + objectString(getOwner2());
+        String addressBlock = getHouseNumber() + " " + objectString(getStreetDirection()) + "   " + getStreetName() + " " + getStreetDesignation();
+        String zipcodeBlock = "Phila " + getZipCode();
+//        String valueBlock = "$" + getMarketValue().toString();
+        String valueBlock = "";
+        output = String.format("%-50s%-30s%13s%14s",ownerBlock,addressBlock,zipcodeBlock,valueBlock);
+        return output;
+    }
+
+    public BigDecimal getMarketValue() {
+        return marketValue;
+    }
+
+    public void setMarketValue(BigDecimal marketValue) {
+        this.marketValue = marketValue;
     }
 
     public String getOwner1() {
