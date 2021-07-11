@@ -1,7 +1,7 @@
 # propertiesSearch
 
-propertiesSearch is a Java client that queries a publicly available API to provide
-information about properties in the City of Philadelphia.
+propertiesSearch provides information about properties in the City of Philadelphia
+by querying a publicly available API. It is written in Java.
 
 ## Overview
 ### Quick Start
