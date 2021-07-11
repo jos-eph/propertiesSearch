@@ -1,7 +1,7 @@
 # propertiesSearch
 
 propertiesSearch provides information about properties in the City of Philadelphia
-by querying a publicly available API. It is written in Java.
+by querying a publicly available, SQL-based API. It is written in Java.
 
 ## Overview
 ### Quick Start
@@ -17,7 +17,20 @@ source code, but is disabled by default.
 
 The current Web application provided by the City does not allow search by owner name.
 
-Additionally, familiarity with the API allows you to perform useful analytics,
+Additionally, getting a succcessful result interested me because of the multiple
+required string operations:
+1) A user enters text to search.
+2) This text, when inserted into an SQL query template, must not use
+any reserved characters. For example, the program must be able to accept
+`O'Brien`, a common name with an apostrophe, into a single-quoted SQL
+parameterized query string.
+3) The program must be able to store a parametrized query string in a format that is
+easy to read and to debug, but is also compatible with Java's string formatter.
+Java has its own set of escape characters.
+4) Once formatted properly for SQL, the query string must be properly formatted
+into JSON for POSTing to the API server.
+
+Finally, familiarity with the API allows you to perform useful analytics,
 which I may explore in future versions.
 
 ### Current State Of The Program
