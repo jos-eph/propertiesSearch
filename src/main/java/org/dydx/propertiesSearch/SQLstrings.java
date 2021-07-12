@@ -6,7 +6,7 @@ import java.nio.charset.StandardCharsets;
 public class SQLstrings {
     public static final String baseQueryURL = "https://phl.carto.com/api/v2/sql?q=";
     public static final String selectBasicProperty =
-           "SELECT owner_1, owner_2, house_number, street_direction, street_name, street_designation, zip_code, market_value, cartodb_id, pwd_parcel_id, parcel_number, registry_number FROM opa_properties_public ";
+           "SELECT owner_1, owner_2, house_number, street_direction, street_name, street_designation, zip_code, market_value, unit, cartodb_id, pwd_parcel_id, parcel_number, registry_number FROM opa_properties_public ";
 
     public static final String whereOwnerLike =
             "WHERE owner_1 ILIKE '%?%' OR owner_2 ILIKE '%?%' LIMIT 10";

@@ -28,6 +28,5 @@ public class PropertiesSearchApplication {
 			System.out.println(basicProperty);
 		}
 
-
 	}
 }

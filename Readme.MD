@@ -1,7 +1,10 @@
 # propertiesSearch
 
 propertiesSearch provides information about properties in the City of Philadelphia
-by querying a publicly available, SQL-based API. It is written in Java.
+by querying a publicly available, SQL-based API.
+
+It provides functionality not available in the current Web application: the ability
+to search by owner name.
 
 ## Overview
 ### Quick Start
@@ -10,15 +13,18 @@ Currently, running propertiesSearch allows you search Philadelphia properties by
 owner name. The results include owner name and address, providing a
 "white pages" functionality.
 
-Property value information is also available by uncommenting a single line of
+Entered search text matches any part of an owner name.
+
+Sample output using test data is as follows:
+![..5 rows of test data displayed in a printed table..](testoutput.png)
+
+Property value information (displayed above) is available by uncommenting a single line of
 source code, but is disabled by default.
 
-### What This Is And Why I Wrote It
-
-The current Web application provided by the City does not allow search by owner name.
-
-Additionally, getting a succcessful result interested me because of the multiple
+### More About Why I Wrote This
+Writing a client for the Carto SQL API interested me because of the multiple
 required string operations:
+
 1) A user enters text to search.
 2) This text, when inserted into an SQL query template, must not use
 any reserved characters. For example, the program must be able to accept
@@ -34,7 +40,7 @@ and for PostgreSQL.
 4) Once formatted properly for SQL, the query string must be properly formatted
 into JSON for POSTing to the API server.
 
-Finally, familiarity with the API allows you to perform useful analytics,
+Additionally, familiarity with the API allows you to perform useful analytics,
 which I may explore in future versions.
 
 ### Current State Of The Program
@@ -59,7 +65,7 @@ The propertiesSearch source requires Spring Boot 2.5.2 and JUnit 4.12
 in order to compile.
 
 ## Contact
-To contact me, email ![](/emailnoise.png) (dydx.org domain name, username joseph).
+To contact me, email ![](emailnoise.png) (dydx.org domain name, username joseph).
 
 ## Legal
 ### License and Disclaimer of Warranty
