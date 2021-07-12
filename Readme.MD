@@ -69,7 +69,7 @@ To contact me, email ![dydx.org domain name, username joseph](/emailnoise.png).
 
 ## Legal
 ### License and Disclaimer of Warranty
-This program is licensed under AGPL v3.
+This program is Copyright 2021 and licensed under AGPL v3.
 
 However, I request as a courtesy that you do not distribute compiled binaries
 outside of the developer community.
