@@ -36,8 +36,6 @@ public class BasicPropertyService {
 
         CartoRequest request = new CartoRequest();
         request.setQ(queryForDatabase);
-       // JSONObject request = new JSONObject();
-        //request.put("q",queryForDatabase);
 
         // https://docs.oracle.com/javaee/7/api/javax/json/JsonObjectBuilder.html
 
