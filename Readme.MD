@@ -29,14 +29,11 @@ required string operations:
 2) This text, when inserted into an SQL query template, must not use
 any reserved characters. For example, the program must be able to accept
 `O'Brien`, a common name with an apostrophe, into a single-quoted SQL
-parameterized query string.
-3) The program must be able to store a
-parameterized query string in a format that
-is easy to read and to debug, but is also
-compatible with Java's string formatter.
-In particular, the `%` character has a
-different meaning for the string formatter
-and for PostgreSQL.
+parametrized query string.
+3) The program must be able to store a parametrized query string in a format
+that is easy to read and to debug, but is also compatible with Java's string
+formatter. In particular, the `%` character has a different meaning for the
+string formatter and for PostgreSQL.
 4) Once formatted properly for SQL, the query string must be properly formatted
 into JSON for POSTing to the API server.
 
