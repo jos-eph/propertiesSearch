@@ -22,7 +22,7 @@ Property value information (displayed above) is available by uncommenting a sing
 source code, but is disabled by default.
 
 ### More About Why I Wrote This
-This client makes SQL requests via POST, enabling complex SQL queries, and calls 
+This client makes SQL requests via POST, enabling complex SQL queries, and utilizes
 the actively maintained Spring framework. 
 
 Writing a client for the Carto SQL API also interested me because of the multiple
