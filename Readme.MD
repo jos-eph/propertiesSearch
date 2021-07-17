@@ -22,21 +22,21 @@ Property value information (displayed above) is available by uncommenting a sing
 source code, but is disabled by default.
 
 ### More About Why I Wrote This
-Writing a client for the Carto SQL API interested me because of the multiple
+This client makes SQL requests via POST, enabling complex SQL queries, and utilizes
+the actively maintained Spring framework. 
+
+Writing a client for the Carto SQL API also interested me because of the multiple
 required string operations:
 
 1) A user enters text to search.
 2) This text, when inserted into an SQL query template, must not use
 any reserved characters. For example, the program must be able to accept
 `O'Brien`, a common name with an apostrophe, into a single-quoted SQL
-parameterized query string.
-3) The program must be able to store a
-parameterized query string in a format that
-is easy to read and to debug, but is also
-compatible with Java's string formatter.
-In particular, the `%` character has a
-different meaning for the string formatter
-and for PostgreSQL.
+parametrized query string.
+3) The program must be able to store a parametrized query string in a format
+that is easy to read and to debug, but is also compatible with Java's string
+formatter. In particular, the `%` character has a different meaning for the
+string formatter and for PostgreSQL.
 4) Once formatted properly for SQL, the query string must be properly formatted
 into JSON for POSTing to the API server.
 
@@ -69,20 +69,20 @@ To contact me, email ![dydx.org domain name, username joseph](/emailnoise.png).
 
 ## Legal
 ### License and Disclaimer of Warranty
-This program is licensed under GPL v3.
+This program is Copyright 2021 and licensed under AGPL v3.
 
 However, I request as a courtesy that you do not distribute compiled binaries
 outside of the developer community.
 
-> This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
->
-> This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
->
->You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+    
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
