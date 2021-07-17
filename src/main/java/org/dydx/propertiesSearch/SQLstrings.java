@@ -33,7 +33,6 @@ public class SQLstrings {
 
         }
 
-        System.out.println("Built string formatter: " + returnString);
         return returnString;
     }
     

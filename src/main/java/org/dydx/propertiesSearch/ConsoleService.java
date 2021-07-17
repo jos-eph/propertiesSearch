@@ -42,15 +42,66 @@ public class ConsoleService {
 
     }
 
+    public String getSqlParamSafeUserInput(String prompt) {
+        return safeParamsSQL(getUserInput(prompt));
+    }
+
     public String getUserInput(String prompt) {
         out.print(prompt + ": ");
         out.flush();
         return in.nextLine();
     }
 
-    public String getSqlParamSafeUserInput(String prompt) {
-        return safeParamsSQL(getUserInput(prompt));
+    public Integer getUserInputInteger(String prompt)
+    {
+        Integer chosenInteger = null;
+        while (chosenInteger==null)
+        {
+            String input=getUserInput(prompt);
+            try
+            { chosenInteger = Integer.parseInt(input);}
+            catch (NumberFormatException ex)
+            {
+                System.err.println("Not an integer. Just enter -1 for valid input" +
+                        " if you got here by mistake. ");
+                out.flush();
+            }
+            catch (Exception ex)
+            { System.err.println(ex.getMessage());; }
+        }
+        return chosenInteger;
     }
+
+    public void displayMenuOptions(Object[] arrayOfChoices)
+    {
+        if (arrayOfChoices==null) { return;}
+        for (int i = 1; i <= arrayOfChoices.length; i++)
+        {
+            String optionString = arrayOfChoices[i-1].toString();
+            String output = Integer.toString(i) + ") " + optionString;
+            out.println(output);
+        }
+
+        System.out.println();
+
+        return;
+
+    }
+
+    public Object getChoiceFromUserInput(Object[] arrayOfChoices) {
+        Object chosenObject = null;
+        displayMenuOptions(arrayOfChoices);
+        Integer chosen = getUserInputInteger("Select an option") - 1;
+        if (chosen >= 0 && chosen < arrayOfChoices.length) {
+            chosenObject = arrayOfChoices[chosen];
+        }
+
+        return chosenObject;
+
+    }
+
+
+
 
 
 }
