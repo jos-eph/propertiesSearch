@@ -42,7 +42,6 @@ public class BasicPropertyService {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<CartoRequest> entity = new HttpEntity<>(request,headers);
-        // HttpEntity<String> entity = new HttpEntity<>(request.toString(),headers);
 
         try {
             listOfPropertiesFromCarto = restTemplate.postForObject(API_BASE_URL + "/post",entity,BasicPropertyCarto.class);
